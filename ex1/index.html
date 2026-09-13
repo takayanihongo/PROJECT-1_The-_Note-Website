@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ledger — Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="drawer-overlay" data-drawer-close></div>
+
+<div class="mobile-topbar">
+  <div class="brand"><span class="brand-mark"></span><span class="brand-name">Ledger</span></div>
+  <button class="menu-btn" data-drawer-open aria-label="Buka menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
+</div>
+
+<div class="app-shell">
+
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark"></span><span class="brand-name">Ledger</span></div>
+
+    <nav class="sidebar-nav">
+      <a href="index.html" class="is-active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="7" height="7" rx="1"/><rect x="13.5" y="3.5" width="7" height="7" rx="1"/><rect x="3.5" y="13.5" width="7" height="7" rx="1"/><rect x="13.5" y="13.5" width="7" height="7" rx="1"/></svg>
+        Dashboard
+      </a>
+      <a href="notes.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3.5h9L19 7.5V20a.5.5 0 0 1-.5.5h-12A.5.5 0 0 1 6 20V4a.5.5 0 0 1 .5-.5Z"/><path d="M14 3.5V8h4.5"/><path d="M9 12h6M9 15.5h6M9 8.5h2"/></svg>
+        Notes
+      </a>
+      <a href="learning.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 4.5 3.5 8.5 12 12.5l8.5-4L12 4.5Z"/><path d="M5.5 11v5c0 1.4 3 3 6.5 3s6.5-1.6 6.5-3v-5"/></svg>
+        Learning
+      </a>
+      <a href="notes.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m19.5 19.5-4.2-4.2"/></svg>
+        Search
+      </a>
+    </nav>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-section-label">Dikunjungi terakhir</div>
+    <div class="sidebar-recent">
+      <a href="note.html?note=closures">Closures dan Lexical Scope</a>
+      <a href="note.html?note=subnetting">Subnetting VLSM Cepat</a>
+      <a href="note.html?note=git-rebase">Git Rebase vs Merge</a>
+    </div>
+
+    <div class="sidebar-footer">Takaya · 214 notes tersimpan</div>
+  </aside>
+
+  <main class="main">
+    <div class="content-wide">
+
+      <section class="hero">
+        <div>
+          <h1>Selamat sore, Takaya.</h1>
+          <p class="hero-sub">Kamu sudah menulis 214 catatan di 12 topik. Berikut ringkasan progres belajarmu minggu ini.</p>
+        </div>
+        <div class="hero-stat">
+          <div class="num">6</div>
+          <div class="label">hari beruntun</div>
+        </div>
+      </section>
+
+      <div class="stat-row">
+        <div class="stat">
+          <div class="stat-num">9</div>
+          <div class="stat-label">Catatan minggu ini</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">4</div>
+          <div class="stat-label">Topik aktif</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">3j 20m</div>
+          <div class="stat-label">Waktu belajar</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">72%</div>
+          <div class="stat-label">Target bulan ini</div>
+        </div>
+      </div>
+
+      <section>
+        <div class="section-heading">
+          <h2>Lanjutkan belajar</h2>
+        </div>
+        <a href="note.html?note=event-loop" class="continue-row" style="color:inherit;">
+          <div class="continue-info">
+            <div class="continue-track">JavaScript · Asynchronous</div>
+            <h3>Memahami Event Loop dan Microtask Queue</h3>
+            <div class="progress-bar"><span style="width:64%"></span></div>
+            <div class="progress-pct">64% selesai · 4 dari 7 bagian</div>
+          </div>
+          <div class="btn btn-primary" style="flex-shrink:0;">Lanjutkan</div>
+        </a>
+      </section>
+
+      <section>
+        <div class="section-heading">
+          <h2>Catatan terbaru</h2>
+          <a href="notes.html" class="see-all">Lihat semua notes</a>
+        </div>
+        <div class="note-list">
+
+          <a href="note.html?note=closures" class="note-row" style="color:inherit;">
+            <div class="note-row-main">
+              <div class="note-row-top">
+                <span class="category-tag">JavaScript</span>
+                <h3 class="note-title">Closures dan Lexical Scope</h3>
+              </div>
+              <p class="note-excerpt">Kenapa fungsi dalam JavaScript bisa "mengingat" variabel dari scope luar meski scope itu sudah selesai dieksekusi.</p>
+            </div>
+            <div class="note-row-meta"><span class="updated-date">Diperbarui 2 jam lalu</span></div>
+          </a>
+
+          <a href="note.html?note=subnetting" class="note-row" style="color:inherit;">
+            <div class="note-row-main">
+              <div class="note-row-top">
+                <span class="category-tag">Networking</span>
+                <h3 class="note-title">Subnetting VLSM Cepat</h3>
+              </div>
+              <p class="note-excerpt">Trik mental math untuk menghitung subnet mask dan jumlah host tanpa kalkulator saat ujian atau interview.</p>
+            </div>
+            <div class="note-row-meta"><span class="updated-date">Kemarin</span></div>
+          </a>
+
+          <a href="note.html?note=git-rebase" class="note-row" style="color:inherit;">
+            <div class="note-row-main">
+              <div class="note-row-top">
+                <span class="category-tag">Git</span>
+                <h3 class="note-title">Git Rebase vs Merge</h3>
+              </div>
+              <p class="note-excerpt">Kapan sebaiknya pakai rebase, kapan merge, dan kenapa tim di kantor punya aturan berbeda-beda soal ini.</p>
+            </div>
+            <div class="note-row-meta"><span class="updated-date">2 hari lalu</span></div>
+          </a>
+
+          <a href="note.html?note=permissions" class="note-row" style="color:inherit;">
+            <div class="note-row-main">
+              <div class="note-row-top">
+                <span class="category-tag">Linux</span>
+                <h3 class="note-title">Permission dan Ownership File</h3>
+              </div>
+              <p class="note-excerpt">Membaca rwx, memahami chmod angka vs simbol, dan kasus umum "Permission denied" di server.</p>
+            </div>
+            <div class="note-row-meta"><span class="updated-date">3 hari lalu</span></div>
+          </a>
+
+          <a href="note.html?note=list-comprehension" class="note-row" style="color:inherit;">
+            <div class="note-row-main">
+              <div class="note-row-top">
+                <span class="category-tag">Python</span>
+                <h3 class="note-title">List Comprehension Secara Mendalam</h3>
+              </div>
+              <p class="note-excerpt">Bagaimana list comprehension bekerja di balik layar dan kapan sebaiknya kembali ke loop biasa.</p>
+            </div>
+            <div class="note-row-meta"><span class="updated-date">5 hari lalu</span></div>
+          </a>
+
+        </div>
+      </section>
+
+      <section>
+        <div class="section-heading"><h2>Aksi cepat</h2></div>
+        <div class="quick-actions">
+          <button class="btn btn-primary" type="button" data-new-note>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg>
+            Catatan baru
+          </button>
+          <a href="notes.html" class="btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m19.5 19.5-4.2-4.2"/></svg>
+            Cari catatan
+          </a>
+          <a href="notes.html" class="btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3.5h9L19 7.5V20a.5.5 0 0 1-.5.5h-12A.5.5 0 0 1 6 20V4a.5.5 0 0 1 .5-.5Z"/><path d="M14 3.5V8h4.5"/></svg>
+            Jelajahi topik
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

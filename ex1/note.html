@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Closures dan Lexical Scope — Ledger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="drawer-overlay" data-drawer-close></div>
+
+<div class="mobile-topbar">
+  <div class="brand"><span class="brand-mark"></span><span class="brand-name">Ledger</span></div>
+  <button class="menu-btn" data-drawer-open aria-label="Buka menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
+</div>
+
+<div class="app-shell">
+
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark"></span><span class="brand-name">Ledger</span></div>
+
+    <nav class="sidebar-nav">
+      <a href="index.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="7" height="7" rx="1"/><rect x="13.5" y="3.5" width="7" height="7" rx="1"/><rect x="3.5" y="13.5" width="7" height="7" rx="1"/><rect x="13.5" y="13.5" width="7" height="7" rx="1"/></svg>
+        Dashboard
+      </a>
+      <a href="notes.html" class="is-active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3.5h9L19 7.5V20a.5.5 0 0 1-.5.5h-12A.5.5 0 0 1 6 20V4a.5.5 0 0 1 .5-.5Z"/><path d="M14 3.5V8h4.5"/><path d="M9 12h6M9 15.5h6M9 8.5h2"/></svg>
+        Notes
+      </a>
+      <a href="learning.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 4.5 3.5 8.5 12 12.5l8.5-4L12 4.5Z"/><path d="M5.5 11v5c0 1.4 3 3 6.5 3s6.5-1.6 6.5-3v-5"/></svg>
+        Learning
+      </a>
+      <a href="notes.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m19.5 19.5-4.2-4.2"/></svg>
+        Search
+      </a>
+    </nav>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-section-label">Dikunjungi terakhir</div>
+    <div class="sidebar-recent">
+      <a href="note.html?note=closures">Closures dan Lexical Scope</a>
+      <a href="note.html?note=subnetting">Subnetting VLSM Cepat</a>
+      <a href="note.html?note=git-rebase">Git Rebase vs Merge</a>
+    </div>
+
+    <div class="sidebar-footer">Takaya · 214 notes tersimpan</div>
+  </aside>
+
+  <main class="main">
+    <div class="content">
+
+      <div class="breadcrumb">
+        <a href="index.html">Dashboard</a>
+        <span class="sep">/</span>
+        <a href="notes.html">Notes</a>
+        <span class="sep">/</span>
+        <a href="notes.html">JavaScript</a>
+        <span class="sep">/</span>
+        <span>Closures dan Lexical Scope</span>
+      </div>
+
+      <header class="article-header">
+        <h1>Closures dan Lexical Scope</h1>
+        <div class="article-meta">
+          <span class="category-tag">JavaScript</span>
+          <span class="tag-pill">closure</span>
+          <span class="tag-pill">scope</span>
+          <span class="tag-pill">function</span>
+          <span>·</span>
+          <span>Diperbarui 2 jam lalu</span>
+        </div>
+      </header>
+
+      <article class="article-body">
+
+        <p>Closure adalah salah satu konsep yang sering bikin bingung di awal, tapi sebenarnya cuma satu ide sederhana: <strong>fungsi mengingat lingkungan tempat ia dibuat</strong>, bukan tempat ia dipanggil.</p>
+
+        <h2>Apa itu Lexical Scope</h2>
+        <p>Lexical scope berarti scope sebuah variabel ditentukan oleh <em>di mana kode itu ditulis</em>, bukan dari mana fungsi itu dipanggil. Ketika sebuah fungsi didefinisikan di dalam fungsi lain, ia otomatis punya akses ke variabel di fungsi luar tersebut.</p>
+
+        <blockquote>Bayangkan lexical scope seperti alamat rumah: begitu kamu lahir di suatu alamat, alamat itu melekat padamu ke mana pun kamu pergi — bukan berubah tergantung siapa yang mengunjungimu.</blockquote>
+
+        <h2>Contoh Closure Sederhana</h2>
+        <p>Perhatikan contoh berikut. Fungsi <code>increment</code> tetap bisa mengakses variabel <code>count</code> meskipun <code>buatCounter</code> sudah selesai dijalankan:</p>
+
+        <div class="code-block">
+          <div class="code-block-head">
+            <span>javascript</span>
+            <button class="code-block-copy" data-copy-code>Copy</button>
+          </div>
+          <pre><code>function buatCounter() {
+  let count = 0;
+
+  return function increment() {
+    count += 1;
+    return count;
+  };
+}
+
+const counterA = buatCounter();
+console.log(counterA()); // 1
+console.log(counterA()); // 2
+
+const counterB = buatCounter();
+console.log(counterB()); // 1, tidak terpengaruh counterA</code></pre>
+        </div>
+
+        <p>Setiap kali <code>buatCounter()</code> dipanggil, JavaScript membuat scope baru dengan <code>count</code> miliknya sendiri. Fungsi <code>increment</code> yang dikembalikan "membawa" scope itu ke mana pun ia dipakai — inilah closure.</p>
+
+        <h2>Kenapa Ini Penting di Dunia Kerja</h2>
+        <p>Closure dipakai di mana-mana tanpa kamu sadari:</p>
+        <ul>
+          <li>Membuat data privat sebelum <code>class</code> dan <code>#field</code> populer.</li>
+          <li>Event handler yang perlu mengingat state tertentu, misalnya ID item yang diklik.</li>
+          <li>Custom hook di React seperti <code>useState</code>, yang bergantung pada closure untuk menyimpan nilai antar render.</li>
+          <li>Memoization dan caching sederhana di sisi server maupun client.</li>
+        </ul>
+
+        <h2>Kesalahan Umum</h2>
+        <p>Kesalahan paling klasik adalah memakai closure di dalam loop dengan <code>var</code>, sehingga semua fungsi berbagi satu variabel yang sama alih-alih punya salinan masing-masing. Mengganti <code>var</code> dengan <code>let</code> biasanya cukup untuk memperbaikinya, karena <code>let</code> membuat binding baru di setiap iterasi.</p>
+
+      </article>
+
+      <div class="related-notes">
+        <div class="section-heading"><h2>Catatan terkait</h2></div>
+        <div class="related-grid">
+          <a href="note.html?note=event-loop" class="related-card">
+            <span class="category-tag">JavaScript</span>
+            <h4>Event Loop dan Microtask Queue</h4>
+            <p>Urutan eksekusi call stack, microtask, dan macrotask.</p>
+          </a>
+          <a href="note.html?note=this-keyword" class="related-card">
+            <span class="category-tag">JavaScript</span>
+            <h4>this Keyword dan Cara Kerjanya</h4>
+            <p>Kenapa nilai this berubah tergantung cara fungsi dipanggil.</p>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

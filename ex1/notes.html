@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ledger — Notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="drawer-overlay" data-drawer-close></div>
+
+<div class="mobile-topbar">
+  <div class="brand"><span class="brand-mark"></span><span class="brand-name">Ledger</span></div>
+  <button class="menu-btn" data-drawer-open aria-label="Buka menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
+</div>
+
+<div class="app-shell">
+
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark"></span><span class="brand-name">Ledger</span></div>
+
+    <nav class="sidebar-nav">
+      <a href="index.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="7" height="7" rx="1"/><rect x="13.5" y="3.5" width="7" height="7" rx="1"/><rect x="3.5" y="13.5" width="7" height="7" rx="1"/><rect x="13.5" y="13.5" width="7" height="7" rx="1"/></svg>
+        Dashboard
+      </a>
+      <a href="notes.html" class="is-active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3.5h9L19 7.5V20a.5.5 0 0 1-.5.5h-12A.5.5 0 0 1 6 20V4a.5.5 0 0 1 .5-.5Z"/><path d="M14 3.5V8h4.5"/><path d="M9 12h6M9 15.5h6M9 8.5h2"/></svg>
+        Notes
+      </a>
+      <a href="learning.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 4.5 3.5 8.5 12 12.5l8.5-4L12 4.5Z"/><path d="M5.5 11v5c0 1.4 3 3 6.5 3s6.5-1.6 6.5-3v-5"/></svg>
+        Learning
+      </a>
+      <a href="notes.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m19.5 19.5-4.2-4.2"/></svg>
+        Search
+      </a>
+    </nav>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-section-label">Dikunjungi terakhir</div>
+    <div class="sidebar-recent">
+      <a href="note.html?note=closures">Closures dan Lexical Scope</a>
+      <a href="note.html?note=subnetting">Subnetting VLSM Cepat</a>
+      <a href="note.html?note=git-rebase">Git Rebase vs Merge</a>
+    </div>
+
+    <div class="sidebar-footer">Takaya · 214 notes tersimpan</div>
+  </aside>
+
+  <main class="main">
+    <div class="content">
+
+      <div class="page-header">
+        <h1>Notes</h1>
+        <p class="hero-sub">Semua catatan belajarmu, bisa dicari dan disaring per topik.</p>
+      </div>
+
+      <div class="search-field">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m19.5 19.5-4.2-4.2"/></svg>
+        <input type="text" placeholder="Cari judul atau tag…" data-note-search autocomplete="off" />
+      </div>
+
+      <div class="filter-row">
+        <button class="filter-chip is-active" data-filter-chip="all">Semua</button>
+        <button class="filter-chip" data-filter-chip="javascript">JavaScript</button>
+        <button class="filter-chip" data-filter-chip="python">Python</button>
+        <button class="filter-chip" data-filter-chip="networking">Networking</button>
+        <button class="filter-chip" data-filter-chip="linux">Linux</button>
+        <button class="filter-chip" data-filter-chip="git">Git</button>
+      </div>
+
+      <p class="results-count" data-results-count>9 notes</p>
+
+      <div class="note-list">
+
+        <a href="note.html?note=closures" class="note-row note-tags-visible" data-note-row data-title="Closures dan Lexical Scope" data-category="javascript" data-tags="closure, scope, function">
+          <div class="note-row-main">
+            <div class="note-row-top">
+              <span class="category-tag">JavaScript</span>
+              <h3 class="note-title">Closures dan Lexical Scope</h3>
+            </div>
+            <p class="note-excerpt">Kenapa fungsi dalam JavaScript bisa "mengingat" variabel dari scope luar.</p>
+          </div>
+          <div class="note-row-tags">
+            <span class="tag-pill">closure</span>
+            <span class="tag-pill">scope</span>
+          </div>
+          <div class="note-row-meta"><span class="updated-date">2 jam lalu</span></div>
+        </a>
+
+        <a href="note.html?note=event-loop" class="note-row note-tags-visible" data-note-row data-title="Memahami Event Loop dan Microtask Queue" data-category="javascript" data-tags="async, event loop, promise">
+          <div class="note-row-main">
+            <div class="note-row-top">
+              <span class="category-tag">JavaScript</span>
+              <h3 class="note-title">Event Loop dan Microtask Queue</h3>
+            </div>
+            <p class="note-excerpt">Urutan eksekusi call stack, microtask, dan macrotask yang sering bikin bingung.</p>
+          </div>
+          <div class="note-row-tags">
+            <span class="tag-pill">async</span>
+            <span class="tag-pill">promise</span>
+          </div>
+          <div class="note-row-meta"><span class="updated-date">1 hari lalu</span></div>
+        </a>
+
+        <a href="note.html?note=subnetting" class="note-row note-tags-visible" data-note-row data-title="Subnetting VLSM Cepat" data-category="networking" data-tags="subnet, ip, vlsm">
+          <div class="note-row-main">
+            <div class="note-row-top">
+              <span class="category-tag">Networking</span>
+              <h3 class="note-title">Subnetting VLSM Cepat</h3>
+            </div>
+            <p class="note-excerpt">Trik mental math untuk menghitung subnet mask tanpa kalkulator.</p>
+          </div>
+          <div class="note-row-tags">
+            <span class="tag-pill">subnet</span>
+            <span class="tag-pill">vlsm</span>
+          </div>
+          <div class="note-row-meta"><span class="updated-date">Kemarin</span></div>
+        </a>
+
+        <a href="note.html?note=git-rebase" class="note-row note-tags-visible" data-note-row data-title="Git Rebase vs Merge" data-category="git" data-tags="rebase, merge, branch">
+          <div class="note-row-main">
+            <div class="note-row-top">
+              <span class="category-tag">Git</span>
+              <h3 class="note-title">Git Rebase vs Merge</h3>
+            </div>
+            <p class="note-excerpt">Kapan sebaiknya pakai rebase, kapan merge, dan alasan di baliknya.</p>
+          </div>
+          <div class="note-row-tags">
+            <span class="tag-pill">rebase</span>
+            <span class="tag-pill">merge</span>
+          </div>
+          <div class="note-row-meta"><span class="updated-date">2 hari lalu</span></div>
+        </a>
+
+        <a href="note.html?note=permissions" class="note-row note-tags-visible" data-note-row data-title="Permission dan Ownership File" data-category="linux" data-tags="permission, chmod, linux">
+          <div class="note-row-main">
+            <div class="note-row-top">
+              <span class="category-tag">Linux</span>
+              <h3 class="note-title">Permission dan Ownership File</h3>
+            </div>
+            <p class="note-excerpt">Membaca rwx, chmod angka vs simbol, dan kasus umum permission denied.</p>
+          </div>
+          <div class="note-row-tags">
+            <span class="tag-pill">chmod</span>
+            <span class="tag-pill">permission</span>
+          </div>
+          <div class="note-row-meta"><span class="updated-date">3 hari lalu</span></div>
+        </a>
+
+        <a href="note.html?note=list-comprehension" class="note-row note-tags-visible" data-note-row data-title="List Comprehension Secara Mendalam" data-category="python" data-tags="list, loop, comprehension">
+          <div class="note-row-main">
+            <div class="note-row-top">
+              <span class="category-tag">Python</span>
+              <h3 class="note-title">List Comprehension Secara Mendalam</h3>
+            </div>
+            <p class="note-excerpt">Cara kerja list comprehension di balik layar dan kapan kembali ke loop biasa.</p>
+          </div>
+          <div class="note-row-tags">
+            <span class="tag-pill">list</span>
+            <span class="tag-pill">loop</span>
+          </div>
+          <div class="note-row-meta"><span class="updated-date">5 hari lalu</span></div>
+        </a>
+
+        <a href="note.html?note=static-routing" class="note-row note-tags-visible" data-note-row data-title="Static Routing vs Dynamic Routing" data-category="networking" data-tags="routing, ospf, static route">
+          <div class="note-row-main">
+            <div class="note-row-top">
+              <span class="category-tag">Networking</span>
+              <h3 class="note-title">Static Routing vs Dynamic Routing</h3>
+            </div>
+            <p class="note-excerpt">Trade-off kontrol manual vs otomatisasi protokol seperti OSPF.</p>
+          </div>
+          <div class="note-row-tags">
+            <span class="tag-pill">routing</span>
+            <span class="tag-pill">ospf</span>
+          </div>
+          <div class="note-row-meta"><span class="updated-date">6 hari lalu</span></div>
+        </a>
+
+        <a href="note.html?note=git-stash" class="note-row note-tags-visible" data-note-row data-title="Git Stash untuk Konteks Cepat" data-category="git" data-tags="stash, workflow, git">
+          <div class="note-row-main">
+            <div class="note-row-top">
+              <span class="category-tag">Git</span>
+              <h3 class="note-title">Git Stash untuk Konteks Cepat</h3>
+            </div>
+            <p class="note-excerpt">Menyimpan perubahan sementara saat harus pindah task mendadak.</p>
+          </div>
+          <div class="note-row-tags">
+            <span class="tag-pill">stash</span>
+            <span class="tag-pill">workflow</span>
+          </div>
+          <div class="note-row-meta"><span class="updated-date">1 minggu lalu</span></div>
+        </a>
+
+        <a href="note.html?note=virtualenv" class="note-row note-tags-visible" data-note-row data-title="Virtual Environment di Python" data-category="python" data-tags="venv, pip, environment">
+          <div class="note-row-main">
+            <div class="note-row-top">
+              <span class="category-tag">Python</span>
+              <h3 class="note-title">Virtual Environment di Python</h3>
+            </div>
+            <p class="note-excerpt">Kenapa setiap project sebaiknya punya venv sendiri, bukan install global.</p>
+          </div>
+          <div class="note-row-tags">
+            <span class="tag-pill">venv</span>
+            <span class="tag-pill">pip</span>
+          </div>
+          <div class="note-row-meta"><span class="updated-date">1 minggu lalu</span></div>
+        </a>
+
+      </div>
+
+      <div class="empty-state" data-empty-state>
+        <p>Tidak ada catatan yang cocok</p>
+        <p>Coba kata kunci lain atau ganti filter topik.</p>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
