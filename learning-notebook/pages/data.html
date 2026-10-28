@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../assets/css/data.css">
+    <link rel="stylesheet" href="../assets/css/navigation.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,45 +11,72 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Data</h1>
-    <div class="note">
-        <h2>Tambah Note</h2>
+    <main class="page">
+        <header class="page-header">
+            <p class="eyebrow">Learning Notebook</p>
+            <h1>Catatan belajar</h1>
+            <p class="page-description">Simpan materi dan catatan belajarmu dengan rapi.</p>
+        </header>
+
+        <section class="panel" aria-labelledby="add-note-heading">
+        <h2 id="add-note-heading">Tambah catatan</h2>
         <form id="note-form">
-            <label for="title">Judul</label>
-            <input id="title" name="title" type="text" required>
+            <label class="field field-wide" for="title">
+                <span>Judul</span>
+                <input id="title" name="title" type="text" placeholder="Contoh: Aritmatika dasar" required>
+            </label>
 
-            <label for="content">Isi</label>
-            <textarea id="content" name="content" rows="3" required></textarea>
+            <label class="field field-wide" for="content">
+                <span>Isi catatan</span>
+                <textarea id="content" name="content" rows="4" placeholder="Tulis materi yang ingin kamu simpan..." required></textarea>
+            </label>
 
-            <label for="lesson">Pelajaran</label>
-            <input id="lesson" name="lesson" type="text" required>
+            <label class="field" for="lesson">
+                <span>Pelajaran</span>
+                <input id="lesson" name="lesson" type="text" placeholder="Contoh: Matematika" required>
+            </label>
 
-            <label for="date">Waktu</label>
-            <input id="date" name="date" type="date" required>
+            <label class="field" for="date">
+                <span>Waktu</span>
+                <input id="date" name="date" type="date" required>
+            </label>
 
-            <label for="kind">Jenis</label>
-            <input id="kind" name="kind" type="text" value="note" required>
+            <label class="field" for="kind">
+                <span>Jenis</span>
+                <input id="kind" name="kind" type="text" value="note" required>
+            </label>
 
             <button type="submit">Tambah Data</button>
             <p id="form-message" role="status" aria-live="polite"></p>
         </form>
+        </section>
 
-        <h2>Note</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th scope="col">No.</th>
-                    <th scope="col">Judul</th>
-                    <th scope="col">Isi</th>
-                    <th scope="col">Pelajaran</th>
-                    <th scope="col">Waktu</th>
-                    <th scope="col">Jenis</th>
-                </tr>
-            </thead>
-            <tbody id="note-list"></tbody>
-        </table>
-    </div>
+        <section class="panel" aria-labelledby="note-list-heading">
+            <div class="section-heading">
+                <div>
+                    <h2 id="note-list-heading">Daftar catatan</h2>
+                    <p class="section-description">Catatan yang sudah kamu simpan.</p>
+                </div>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">No.</th>
+                            <th scope="col">Judul</th>
+                            <th scope="col">Isi</th>
+                            <th scope="col">Pelajaran</th>
+                            <th scope="col">Waktu</th>
+                            <th scope="col">Jenis</th>
+                        </tr>
+                    </thead>
+                    <tbody id="note-list"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
 
+    <script src="../assets/js/navigation.js" defer></script>
     <script>
         const storageKey = "ex2-notes";
         const defaultNotes = [{
