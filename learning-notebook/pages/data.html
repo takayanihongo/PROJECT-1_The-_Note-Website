@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../assets/css/data.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Data</h1>
+    <div class="note">
+        <h2>Tambah Note</h2>
+        <form id="note-form">
+            <label for="title">Judul</label>
+            <input id="title" name="title" type="text" required>
+
+            <label for="content">Isi</label>
+            <textarea id="content" name="content" rows="3" required></textarea>
+
+            <label for="lesson">Pelajaran</label>
+            <input id="lesson" name="lesson" type="text" required>
+
+            <label for="date">Waktu</label>
+            <input id="date" name="date" type="date" required>
+
+            <label for="kind">Jenis</label>
+            <input id="kind" name="kind" type="text" value="note" required>
+
+            <button type="submit">Tambah Data</button>
+            <p id="form-message" role="status" aria-live="polite"></p>
+        </form>
+
+        <h2>Note</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">Judul</th>
+                    <th scope="col">Isi</th>
+                    <th scope="col">Pelajaran</th>
+                    <th scope="col">Waktu</th>
+                    <th scope="col">Jenis</th>
+                </tr>
+            </thead>
+            <tbody id="note-list"></tbody>
+        </table>
+    </div>
+
+    <script>
+        const storageKey = "ex2-notes";
+        const defaultNotes = [{
+            title: "aritmatika",
+            content: "materi aritmatika tingkat dasar",
+            lesson: "Matematika",
+            date: "2026-09-13",
+            kind: "note"
+        }];
+        const form = document.querySelector("#note-form");
+        const noteList = document.querySelector("#note-list");
+        const formMessage = document.querySelector("#form-message");
+
+        function loadNotes() {
+            const savedNotes = localStorage.getItem(storageKey);
+            return savedNotes === null ? defaultNotes : JSON.parse(savedNotes);
+        }
+
+        function renderNotes(notes) {
+            noteList.replaceChildren();
+
+            notes.forEach((note, index) => {
+                const row = document.createElement("tr");
+                [index + 1, note.title, note.content, note.lesson, note.date, note.kind]
+                    .forEach((value) => {
+                        const cell = document.createElement("td");
+                        cell.textContent = value;
+                        row.append(cell);
+                    });
+                noteList.append(row);
+            });
+        }
+
+        let notes;
+        try {
+            notes = loadNotes();
+            if (!Array.isArray(notes)) {
+                throw new Error("Data note yang tersimpan tidak valid.");
+            }
+            renderNotes(notes);
+        } catch (error) {
+            formMessage.textContent = "Data tidak dapat dimuat. Coba bersihkan penyimpanan browser untuk halaman ini.";
+            formMessage.classList.add("error");
+            console.error("Gagal memuat data note:", error);
+            form.querySelector("button").disabled = true;
+        }
+
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            const formData = new FormData(form);
+            const newNote = {
+                title: formData.get("title").trim(),
+                content: formData.get("content").trim(),
+                lesson: formData.get("lesson").trim(),
+                date: formData.get("date"),
+                kind: formData.get("kind").trim()
+            };
+            const updatedNotes = [...notes, newNote];
+
+            try {
+                localStorage.setItem(storageKey, JSON.stringify(updatedNotes));
+                notes = updatedNotes;
+                renderNotes(notes);
+                form.reset();
+                form.elements.kind.value = "note";
+                formMessage.textContent = "Data berhasil ditambahkan.";
+                formMessage.classList.remove("error");
+            } catch (error) {
+                formMessage.textContent = "Data gagal disimpan. Periksa ruang penyimpanan browser.";
+                formMessage.classList.add("error");
+                console.error("Gagal menyimpan data note:", error);
+            }
+        });
+    </script>
+</body>
+</html>
